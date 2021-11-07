@@ -1,18 +1,24 @@
-#include <Adafruit_BME280.h>
+
 #include <WiFi.h>
-#include <Wire.h>
 #include <WiFiClient.h>
 #include <WebServer.h>
 #include <ESPmDNS.h>
 #include <Adafruit_NeoPixel.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <Adafruit_BME280.h>
 
 const char* ssid = "Tomato24";
 const char* password = "";
 const int PIN = 8;
 
+Adafruit_BME280 bme; // use I2C interface
+Adafruit_Sensor *bme_temp = bme.getTemperatureSensor();
+Adafruit_Sensor *bme_pressure = bme.getPressureSensor();
+Adafruit_Sensor *bme_humidity = bme.getHumiditySensor();
+
 WebServer server(80);
 Adafruit_NeoPixel pixels(1, PIN, NEO_GRB + NEO_KHZ800);
-BME280 mySensor;
 
 void handleRoot() {
   pixels.setPixelColor(0, pixels.Color(0, 254, 0));
@@ -27,17 +33,18 @@ void handleMetrics() {
   pixels.setPixelColor(0, pixels.Color(254, 0, 0));
   pixels.show();   // Send the updated pixel colors to the hardware.
 
-  // humidity    = mySensor.readFloatHumidity();
-  // pressure    = mySensor.readFloatPressure();
-  // temperature = mySensor.readTempC();
+  sensors_event_t temp_event, pressure_event, humidity_event;
+  bme_temp->getEvent(&temp_event);
+  bme_pressure->getEvent(&pressure_event);
+  bme_humidity->getEvent(&humidity_event);
 
   Serial.println("constructing response");
   String message = "humidity: ";
-  message += mySensor.readFloatHumidity();
+  message += humidity_event.relative_humidity;
   message += "\npressure: ";
-  message += mySensor.readFloatPressure();
+  message += pressure_event.pressure;
   message += "\ntemperature: ";
-  message += mySensor.readTempC();
+  message += temp_event.temperature;
   message += "\n";
   Serial.println("sending response");
   server.send(200, "text/plain", message);
@@ -69,8 +76,10 @@ void setup(void) {
   Serial.begin(115200);
   Serial.println("setup wire");
   Wire.begin(0,1);
-  mySensor.setI2CAddress(0x77);
-  mySensor.beginI2C()
+  if (!bme.begin()) {
+    Serial.println(F("Could not find a valid BME280 sensor, check wiring!"));
+    while (1) delay(10);
+  }
   Serial.println("setup wire");
   
   Serial.println("setup pixel");
