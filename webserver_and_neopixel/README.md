@@ -20,9 +20,9 @@ Fusing:
 
 * Use serial for diagnositc infomration on setup and error message.
 * Get the esp32 board to
-** run arduino ( The arduino IDE takes care of this transparently ).
-** talk to the I2C BME 280 device.
-** talk to the on-board neo pixel
+- [x] run arduino ( The arduino IDE takes care of this transparently ).
+- [x] talk to the I2C BME 280 device.
+- [x] talk to the on-board neo pixel
 * Get a basic web server setup.
 * Write a handler for the /metrics endpoint where the sensor values are exposed. They are exposed in a way that means a prometheus server can collect them at regular intervals and squirrel the data way for otehr system to query , report, agregate, and graph. In this case I use grafana.
 
@@ -35,6 +35,8 @@ Use arduino library manager to ensure these libraies are installed.
 * Wifi WifiClient WebServer
 
 # Picture
+
+<img src="esp32_neopixel_bme280.jpg" alt="photograph of the wired up parts" width="400px"/>
 
 ![photograph of the wired up parts](esp32_neopixel_bme280.jpg)
 
