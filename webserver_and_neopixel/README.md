@@ -51,9 +51,22 @@ Use arduino library manager to ensure these libraies are installed.
 
 ## Onboard led
 
-With other arduino boards there is a simple "set high" = on led "on board that you can use to given an indication of what's going on on your arduino run time.
+With other arduino boards there is a simple "set high = on" led on-board that you can use to given an indication of what's going on on your arduino run time.
 
-With the ESP32-C3-DevKitC-02 the onboard led is infact a neopixel on pin 8 and with hand that as an option in the neopixel library setup.
+With the ESP32-C3-DevKitC-02 the onboard led is infact a neopixel on pin 8 , you can't jsut set it to high to get it to turn on. Instead you use the neopixel library and have to hand it the special pin 8
+
+```
+13 const int PIN = 8;
+...
+21 Adafruit_NeoPixel pixels(1, PIN, NEO_GRB + NEO_KHZ800);
+```
+
+In this case the first arugment "1" is the number of pixel as neopixel are often found as a string each individually addressable.
+So our "number of pixels" is 1 , and the index for it is zero in the code further down:
+
+```
+33 pixels.setPixelColor(0, pixels.Color(254, 0, 0));
+```
 
 Very handly IMHO.
 
