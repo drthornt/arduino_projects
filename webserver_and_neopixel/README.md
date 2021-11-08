@@ -1,4 +1,10 @@
-# Overview
+# Table of Contents
+
+1. [Overview](#Overview)
+2. [Parts](#Parts)
+3. [Plan/Design](#Plan/Design)
+
+#Overview
 
 A little home sensor project.
  
@@ -8,7 +14,7 @@ Fusing:
 2. BME280 - simple enviromentmental sensor, temperature, humidity, barometrics pressue.
 3. some code to make it play nice with other data systems.
 
-# Parts
+#Parts
 
 * [ESP32-C3-DevKitC-02](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitc-02.html)
 * [SparkFun Atmospheric Sensor Breakout - BME280](https://www.sparkfun.com/products/13676)
@@ -16,7 +22,7 @@ Fusing:
 * Wires
 * prototyping board.
 
-# Plan / Design
+#Plan/Design
 
 * Use serial for diagnositc infomration on setup and error message.
 * Get the esp32 board to
@@ -37,8 +43,6 @@ Use arduino library manager to ensure these libraies are installed.
 # Picture
 
 <img src="esp32_neopixel_bme280.jpg" alt="photograph of the wired up parts" width="400px"/>
-
-![photograph of the wired up parts](esp32_neopixel_bme280.jpg)
 
 # Gotchas, Caveats & Tricks
 
