@@ -1,11 +1,11 @@
 # Table of Contents
 
-1. [Overview](#Overview)
-2. [Parts](#Parts)
-3. [Plan/Design](#Plan/Design)
-4. [Load Some Libraries]( Load Some Libraries )
-5. [Pictuire] ( #Picture )
-6. [Gotchas, Caveats & Tricks] ( #Gotchas, Caveats & Tricks )
+1. [Overview](#overview)
+2. [Parts](#parts)
+3. [Plan/Design](#plandesign)
+4. [Load Some Libraries](#load-some-libraries)
+5. [Pictuire](#picture)
+6. [Gotchas, Caveats & Tricks](#gotchas-caveats--tricks)
 
 # Overview
 
@@ -33,7 +33,7 @@ Fusing:
 - [x] talk to the I2C BME 280 device.
 - [x] talk to the on-board neo pixel
 * Get a basic web server setup.
-* Write a handler for the /metrics endpoint where the sensor values are exposed. They are exposed in a way that means a prometheus server can collect them at regular intervals and squirrel the data way for otehr system to query , report, agregate, and graph. In this case I use grafana.
+* Write a handler for the /metrics endpoint where the sensor values are exposed. They are exposed in a way that means a prometheus server can collect them at regular intervals and squirrel the data way for other system to query , report, agregate, and graph. In this case I use grafana.
 
 # Load Some Libraries
 
@@ -51,7 +51,7 @@ Use arduino library manager to ensure these libraies are installed.
 
 ## Onboard led
 
-With other arduino boards there is a simple "set high" = one led "on board that you can use to given an indication of what's going on on your arduino run time.
+With other arduino boards there is a simple "set high" = on led "on board that you can use to given an indication of what's going on on your arduino run time.
 
 With the ESP32-C3-DevKitC-02 the onboard led is infact a neopixel on pin 8 and with hand that as an option in the neopixel library setup.
 
