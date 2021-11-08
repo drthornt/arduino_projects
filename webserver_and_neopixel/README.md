@@ -35,6 +35,13 @@ Fusing:
 * Get a basic web server setup.
 * Write a handler for the /metrics endpoint where the sensor values are exposed. They are exposed in a way that means a prometheus server can collect them at regular intervals and squirrel the data way for other system to query , report, agregate, and graph. In this case I use grafana.
 
+## Todo
+
+- [ ] Clean up wiring.
+- [ ] Logical wiring diagram.
+- [ ] Create physical housing.
+- [ ] Graphing and dashboard ( Add it to the existing sensor dashbaord for the house).
+
 # Load Some Libraries
 
 Use arduino library manager to ensure these libraies are installed.
