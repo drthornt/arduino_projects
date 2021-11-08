@@ -3,8 +3,11 @@
 1. [Overview](#Overview)
 2. [Parts](#Parts)
 3. [Plan/Design](#Plan/Design)
+4. [Load Some Libraries]( Load Some Libraries )
+5. [Pictuire] ( #Picture )
+6. [Gotchas, Caveats & Tricks] ( #Gotchas, Caveats & Tricks )
 
-#Overview
+# Overview
 
 A little home sensor project.
  
@@ -12,9 +15,9 @@ Fusing:
 
 1. esp32 arduino with wifi.
 2. BME280 - simple enviromentmental sensor, temperature, humidity, barometrics pressue.
-3. some code to make it play nice with other data systems.
+3. Some code to make it play nice with other data systems.
 
-#Parts
+# Parts
 
 * [ESP32-C3-DevKitC-02](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/hw-reference/esp32c3/user-guide-devkitc-02.html)
 * [SparkFun Atmospheric Sensor Breakout - BME280](https://www.sparkfun.com/products/13676)
@@ -22,7 +25,7 @@ Fusing:
 * Wires
 * prototyping board.
 
-#Plan/Design
+# Plan/Design
 
 * Use serial for diagnositc infomration on setup and error message.
 * Get the esp32 board to
@@ -32,7 +35,7 @@ Fusing:
 * Get a basic web server setup.
 * Write a handler for the /metrics endpoint where the sensor values are exposed. They are exposed in a way that means a prometheus server can collect them at regular intervals and squirrel the data way for otehr system to query , report, agregate, and graph. In this case I use grafana.
 
-# Load some libraries:
+# Load Some Libraries
 
 Use arduino library manager to ensure these libraies are installed.
 
